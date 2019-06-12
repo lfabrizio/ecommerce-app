@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>eCommerce App</title>
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
      <script src="script.js"></script>
  <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-  <h2>My ECommerce App</h2>  
+  <h2>My ECommerce App</h2> 
+    <input placeholder="user name" id="userName" type="text">
+  <button onclick="getUserInfo()">Get user info</button>
+ <p id="userInfo"></p>
+  <h3>User registration</h3>
+ <input type="text" id="user-name" placeholder="User name">
+ <input type="text" id="user-id" placeholder="User id">
+ <input type="text" id="message" placeholder="Message">
+ <button onclick="handleSubmit()">Submit</button>
+ <h3>Get all item info</h3>
+ <button onclick="getAllUsers()">Get</button>
+ <p id="result"></p>
+
 </body>
 </html>
