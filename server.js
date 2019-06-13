@@ -2,6 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express()
 const port = 8080
+const keys = require("./keys");
+const User = require("./models/user");
+
+const mongoose = require('mongoose');
+mongoose.connect(keys.mongoDBUrl, { useNewUrlParser: true }).then(() => console.log("DB connected"));
 
 app.use(bodyParser.json());
 
@@ -14,16 +19,19 @@ var data = [];
  const userName = req.body.username;
  const userId = req.body.id;
  const message = req.body.message;
-  const temp = {
+  const data = {
    username: userName,
-   id: userId,
    message: message
  }
-data.push(temp)
- console.log(data);
- const reply = `${userName} with id of ${userId} is saying ${message}`
- res.send(reply);
+console.log(data)
+
+ const user = new User(data)
+ user.save()
+   .then(() => res.send(data))
+   .catch(err => console.log(err))
+
 })
+
 
 app.get("/getallusers", function (req, res) {
  res.send(data)
