@@ -1,12 +1,13 @@
+
 function getUserInfo() {
  const input = document.getElementById("userName").value;
- console.log(input)
-  axios.get("/showprofile/" + input)
+ const url = "/api/showprofile/" + input;
+ axios.get(url)
    .then(response => {
-    document.getElementById("userInfo").innerHTML = response.data
+     document.getElementById("userInfo").innerHTML = JSON.stringify(response.data);
    })
-
 }
+
 
 function handleSubmit() {
  const userName = document.getElementById("user-name").value;
@@ -25,7 +26,7 @@ function handleSubmit() {
 
 }
 function getAllUsers() {
- axios.get("/getallusers/")
+ axios.get("/api/getallusers/")
    .then(response => {
      document.getElementById("result").innerHTML = JSON.stringify(response.data)
    })
